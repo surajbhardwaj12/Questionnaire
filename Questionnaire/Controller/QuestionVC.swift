@@ -5,31 +5,26 @@ import Alamofire
 
 
 class QuestionVC: UIViewController{
-
+    
+    // MARK: - Outlet
     @IBOutlet weak var QuestionLabel: UILabel!
     @IBOutlet weak var ScoreView: UILabel!
-    
     @IBOutlet weak var QusetionCounter: UILabel!
-    
     @IBOutlet weak var viewTimer: SRCountdownTimer!
-    // Question for answer OUTlet
     @IBOutlet weak var NoBtn: UIButton!
     @IBOutlet weak var YesBtn: UIButton!
     
+    //MARK: - Variable
+    var PlayedPlayerName: String = ""
     var Questionnaire = [Questions]()
-    
-    
-
     var questionNumber: Int = 0
     var score: Int = 0
     var SelectedAnswer: Int = 0
     var secondsRemaining = 10
-    
-    
-    
-    let url = URL(string: "https://raw.githubusercontent.com/surajbhardwaj12/Question/main/Question.json")
     var arrQuestionary:[Questions] = []
-   
+    let url = URL(string: "https://raw.githubusercontent.com/surajbhardwaj12/Question/main/Question.json")
+    
+    
     
     
     override func viewDidLoad() {
@@ -41,19 +36,16 @@ class QuestionVC: UIViewController{
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-  
-    
-    
+    //MARK: - API Call
     func apiCall() {
+        arrQuestionary = []
+        score = 0
+        questionNumber = 0
         AF.request(url!).responseJSON { [self] (response) in
             let result = response.data
             print(result)
-            
             do {
-                
-            
                 self.Questionnaire = try JSONDecoder().decode([Questions].self, from: result!)
-                
                 self.arrQuestionary = self.Questionnaire
                 updateQuestion()
             }catch {
@@ -61,17 +53,16 @@ class QuestionVC: UIViewController{
             }
         }
     }
-
-
     
-    @IBAction func PressedAnswer(_ sender: UIButton) {       
-       
+    //MARK: - Action Method
+    
+    @IBAction func PressedAnswer(_ sender: UIButton) {
         if sender.tag == 0 {
             if arrQuestionary[questionNumber].Answer == "Yes" {
                 score += 1
             }
-           
-           // updateQuestion()
+            
+            // updateQuestion()
         }else {
             if arrQuestionary[questionNumber].Answer == "No" {
                 score += 1
@@ -79,21 +70,19 @@ class QuestionVC: UIViewController{
             
             //updateQuestion()
         }
-
+        
         
         updateQuestion()
         
     }
     
+    //MARK: - Custom Function
     func updateQuestion() {
-        
-        
         if questionNumber < arrQuestionary.count  - 1 {
-        
             QuestionLabel.text =  arrQuestionary[questionNumber].Question
             NoBtn.setTitle("No", for: UIControl.State.normal)
             YesBtn.setTitle("Yes", for: UIControl.State.normal)
-           
+            
             timmer()
             
         } else {
@@ -102,27 +91,35 @@ class QuestionVC: UIViewController{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThankYouVC") as! ThankYouVC
             vc.handler { [weak self] doneStatus in
                 guard let `self` = self else {return}
-                print(doneStatus)
+                if doneStatus == "Done"{
+                    self.apiCall()
+                }else{
+                    
+                    self.navigationController?.popToRootViewController(animated: true)
+                    
+                }
+                
             }
-            vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+//            vc.modalPresentationStyle = .fullScreen
+            vc.TotalScore = self.score
+            vc.PlayerName = self.PlayedPlayerName
+            self.present(vc, animated: true, completion: nil)
             
-//            let alart = UIAlertController(title: "Nice Job", message: "End of Quiz.  Do you want to start Over", preferredStyle: .alert)
-//            let restartAction = UIAlertAction(title: "Restart", style: .default , handler: { action in
- //              self.restartQuiz()})
-//
-//            alart.addAction(restartAction)
-//            present(alart, animated: true, completion: nil )
-            }
+            //            let alart = UIAlertController(title: "Nice Job", message: "End of Quiz.  Do you want to start Over", preferredStyle: .alert)
+            //            let restartAction = UIAlertAction(title: "Restart", style: .default , handler: { action in
+            //              self.restartQuiz()})
+            //
+            //            alart.addAction(restartAction)
+            //            present(alart, animated: true, completion: nil )
+        }
         questionNumber += 1
         update()
-        }
+    }
     func update() {
         
-       ScoreView.text = "Score:- \(score)"
+        ScoreView.text = "Score:- \(score)"
         QusetionCounter.text = "\(questionNumber )/\(arrQuestionary.count)"
-        
-        
     }
     func restartQuiz() {
         
@@ -133,22 +130,22 @@ class QuestionVC: UIViewController{
     }
     func timmer() {
         viewTimer.labelFont = UIFont(name: "Arial", size: 60)
-                viewTimer.labelTextColor = UIColor.red
-                viewTimer.timerFinishingText = "0"
-                viewTimer.lineWidth = 10
-                viewTimer.start(beginingValue: 10, interval: 1)
+        viewTimer.labelTextColor = UIColor.red
+        viewTimer.timerFinishingText = "0"
+        viewTimer.lineWidth = 10
+        viewTimer.start(beginingValue: 10, interval: 1)
         
-}
-
     }
     
+}
+//MARK: - Extention
 extension QuestionVC: SRCountdownTimerDelegate {
     func timerDidEnd(sender: SRCountdownTimer, elapsedTime: TimeInterval) {
         updateQuestion()
     }
     
 }
-     
+
 
 
 

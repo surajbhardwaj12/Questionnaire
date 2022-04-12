@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 
+
 extension SignUPVC{
     
-public func openAlert(title: String,
+    public func openAlert(title: String,
                           message: String,
                           alertStyle:UIAlertController.Style,
                           actionTitles:[String],
