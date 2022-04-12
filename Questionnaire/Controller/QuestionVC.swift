@@ -9,7 +9,6 @@ class QuestionVC: UIViewController{
     @IBOutlet weak var QuestionLabel: UILabel!
     @IBOutlet weak var ScoreView: UILabel!
     
-    
     @IBOutlet weak var QusetionCounter: UILabel!
     
     @IBOutlet weak var viewTimer: SRCountdownTimer!
