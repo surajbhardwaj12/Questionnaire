@@ -1,0 +1,156 @@
+
+import UIKit
+import SRCountdownTimer
+import Alamofire
+
+
+class QuestionVC: UIViewController{
+
+    @IBOutlet weak var QuestionLabel: UILabel!
+    @IBOutlet weak var ScoreView: UILabel!
+    
+    
+    @IBOutlet weak var QusetionCounter: UILabel!
+    
+    @IBOutlet weak var viewTimer: SRCountdownTimer!
+    // Question for answer OUTlet
+    @IBOutlet weak var NoBtn: UIButton!
+    @IBOutlet weak var YesBtn: UIButton!
+    
+    var Questionnaire = [Questions]()
+    
+    
+
+    var questionNumber: Int = 0
+    var score: Int = 0
+    var SelectedAnswer: Int = 0
+    var secondsRemaining = 10
+    
+    
+    
+    let url = URL(string: "https://raw.githubusercontent.com/surajbhardwaj12/Question/main/Question.json")
+    var arrQuestionary:[Questions] = []
+   
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        apiCall()
+        timmer()
+        update()
+        viewTimer.delegate = self
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+  
+    
+    
+    func apiCall() {
+        AF.request(url!).responseJSON { [self] (response) in
+            let result = response.data
+            print(result)
+            
+            do {
+                
+            
+                self.Questionnaire = try JSONDecoder().decode([Questions].self, from: result!)
+                
+                self.arrQuestionary = self.Questionnaire
+                updateQuestion()
+            }catch {
+                print("error")
+            }
+        }
+    }
+
+
+    
+    @IBAction func PressedAnswer(_ sender: UIButton) {       
+       
+        if sender.tag == 0 {
+            if arrQuestionary[questionNumber].Answer == "Yes" {
+                score += 1
+            }
+           
+           // updateQuestion()
+        }else {
+            if arrQuestionary[questionNumber].Answer == "No" {
+                score += 1
+            }
+            
+            //updateQuestion()
+        }
+
+        
+        updateQuestion()
+        
+    }
+    
+    func updateQuestion() {
+        
+        
+        if questionNumber < arrQuestionary.count  - 1 {
+        
+            QuestionLabel.text =  arrQuestionary[questionNumber].Question
+            NoBtn.setTitle("No", for: UIControl.State.normal)
+            YesBtn.setTitle("Yes", for: UIControl.State.normal)
+           
+            timmer()
+            
+        } else {
+            
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThankYouVC") as! ThankYouVC
+            vc.handler { [weak self] doneStatus in
+                guard let `self` = self else {return}
+                print(doneStatus)
+            }
+            vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            
+//            let alart = UIAlertController(title: "Nice Job", message: "End of Quiz.  Do you want to start Over", preferredStyle: .alert)
+//            let restartAction = UIAlertAction(title: "Restart", style: .default , handler: { action in
+ //              self.restartQuiz()})
+//
+//            alart.addAction(restartAction)
+//            present(alart, animated: true, completion: nil )
+            }
+        questionNumber += 1
+        update()
+        }
+    func update() {
+        
+       ScoreView.text = "Score:- \(score)"
+        QusetionCounter.text = "\(questionNumber )/\(arrQuestionary.count)"
+        
+        
+    }
+    func restartQuiz() {
+        
+        score = 0
+        questionNumber = 0
+        updateQuestion()
+        timmer()
+    }
+    func timmer() {
+        viewTimer.labelFont = UIFont(name: "Arial", size: 60)
+                viewTimer.labelTextColor = UIColor.red
+                viewTimer.timerFinishingText = "0"
+                viewTimer.lineWidth = 10
+                viewTimer.start(beginingValue: 10, interval: 1)
+        
+}
+
+    }
+    
+extension QuestionVC: SRCountdownTimerDelegate {
+    func timerDidEnd(sender: SRCountdownTimer, elapsedTime: TimeInterval) {
+        updateQuestion()
+    }
+    
+}
+     
+
+
+
+

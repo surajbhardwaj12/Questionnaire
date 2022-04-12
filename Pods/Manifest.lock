@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (5.5.0)
+  - SRCountdownTimer (1.3)
+
+DEPENDENCIES:
+  - Alamofire
+  - SRCountdownTimer
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SRCountdownTimer
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  SRCountdownTimer: b7f833a51cd33003d55df17667b71d26ee17357f
+
+PODFILE CHECKSUM: d05c897755bed4aa084a020f5a507a6e69e2971f
+
+COCOAPODS: 1.11.3
