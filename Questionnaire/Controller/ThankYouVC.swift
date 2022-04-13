@@ -13,6 +13,7 @@ class ThankYouVC: UIViewController {
     var TotalScore: Int = 0
     //MARK: - Outlet
    
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var lblScore: UILabel!
     @IBOutlet weak var lblPlayer: UILabel!
@@ -24,6 +25,7 @@ class ThankYouVC: UIViewController {
         super.viewDidLoad()
         lblScore.text = String(self.TotalScore)
         lblPlayer.text = self.PlayerName
+        setShadow(view: cardView)
 
         
     }
