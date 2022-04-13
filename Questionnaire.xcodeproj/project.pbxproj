@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1370F9FA2806C6E3008B581E /* ViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370F9F92806C6E3008B581E /* ViewShadow.swift */; };
 		13B09CF728054CE90004257D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13B09CF528054CE90004257D /* LaunchScreen.storyboard */; };
 		1E4F2551280070DE00B7FE36 /* ThankYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F2550280070DE00B7FE36 /* ThankYouVC.swift */; };
 		1EE7E0B72800440A0048141E /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E0B62800440A0048141E /* ApiModel.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1370F9F92806C6E3008B581E /* ViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShadow.swift; sourceTree = "<group>"; };
 		13B09CF628054CE90004257D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E4F2550280070DE00B7FE36 /* ThankYouVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankYouVC.swift; sourceTree = "<group>"; };
 		1EE7E0B62800440A0048141E /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				1EE7E0C6280056180048141E /* Alert.swift */,
 				1EE7E0C8280056280048141E /* NameValidation.swift */,
+				1370F9F92806C6E3008B581E /* ViewShadow.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				2213E89F27FCA35400F83AB5 /* CustomBtn.swift in Sources */,
 				1E4F2551280070DE00B7FE36 /* ThankYouVC.swift in Sources */,
 				22D4CE1E27FB570100F282BE /* AppDelegate.swift in Sources */,
+				1370F9FA2806C6E3008B581E /* ViewShadow.swift in Sources */,
 				22D4CE2027FB570100F282BE /* SceneDelegate.swift in Sources */,
 				1EE7E0C7280056180048141E /* Alert.swift in Sources */,
 				2260801527FE16F400CC8BE5 /* CustomLbl.swift in Sources */,
