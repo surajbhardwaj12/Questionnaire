@@ -75,13 +75,13 @@ class QuestionVC: UIViewController{
     
     @IBAction func PressedAnswer(_ sender: UIButton) {
         if sender.tag == 0 {
-            if arrQuestionary[questionNumber].Answer == "Yes" {
+            if arrQuestionary[questionNumber - 1].Answer == "Yes" {
                 score += 1
             }
             
             // updateQuestion()
         }else {
-            if arrQuestionary[questionNumber].Answer == "No" {
+            if arrQuestionary[questionNumber - 1].Answer == "No" {
                 score += 1
             }
             
@@ -95,11 +95,11 @@ class QuestionVC: UIViewController{
     
     //MARK: - Custom Function
     func updateQuestion() {
-        if questionNumber < arrQuestionary.count  - 1 {
-            QuestionLabel.text =  arrQuestionary[questionNumber].Question
-            
+        
+        if questionNumber <= arrQuestionary.count - 1 {
+            questionNumber += 1
+            QuestionLabel.text =  arrQuestionary[questionNumber - 1].Question
             timmer()
-            
         } else {
             
             
@@ -116,33 +116,19 @@ class QuestionVC: UIViewController{
                 
             }
             vc.modalPresentationStyle = .overFullScreen
-//            vc.modalPresentationStyle = .fullScreen
+
             vc.TotalScore = self.score
             vc.PlayerName = self.PlayedPlayerName
             self.present(vc, animated: true, completion: nil)
-            
-            //            let alart = UIAlertController(title: "Nice Job", message: "End of Quiz.  Do you want to start Over", preferredStyle: .alert)
-            //            let restartAction = UIAlertAction(title: "Restart", style: .default , handler: { action in
-            //              self.restartQuiz()})
-            //
-            //            alart.addAction(restartAction)
-            //            present(alart, animated: true, completion: nil )
         }
-        questionNumber += 1
         update()
     }
     func update() {
         
         ScoreView.text = "Score:- \(score)"
-        QusetionCounter.text = "\(questionNumber )/\(arrQuestionary.count)"
+        QusetionCounter.text = "\(questionNumber)/\(arrQuestionary.count)"
     }
-    func restartQuiz() {
-        
-        score = 0
-        questionNumber = 0
-        updateQuestion()
-        timmer()
-    }
+    
     func timmer() {
         viewTimer.labelFont = UIFont(name: "Arial", size: 60)
         viewTimer.labelTextColor = UIColor.red
