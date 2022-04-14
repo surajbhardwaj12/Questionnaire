@@ -97,8 +97,6 @@ class QuestionVC: UIViewController{
     func updateQuestion() {
         if questionNumber < arrQuestionary.count  - 1 {
             QuestionLabel.text =  arrQuestionary[questionNumber].Question
-            NoBtn.setTitle("No", for: UIControl.State.normal)
-            YesBtn.setTitle("Yes", for: UIControl.State.normal)
             
             timmer()
             
