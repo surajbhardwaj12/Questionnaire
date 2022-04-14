@@ -15,7 +15,6 @@ class ThankYouVC: UIViewController {
    
     @IBOutlet weak var cardView: UIView!
     @IBOutlet var mainView: UIView!
-    @IBOutlet weak var lblScore: UILabel!
     @IBOutlet weak var lblPlayer: UILabel!
     
     //MARK: - Variable
@@ -23,8 +22,7 @@ class ThankYouVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblScore.text = String(self.TotalScore)
-        lblPlayer.text = self.PlayerName
+        lblPlayer.text = "\(self.PlayerName) \(String(self.TotalScore))"
         setShadow(view: cardView)
 
         
