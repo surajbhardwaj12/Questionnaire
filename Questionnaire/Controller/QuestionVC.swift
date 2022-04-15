@@ -32,8 +32,8 @@ class QuestionVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiCall()
         timmer()
+        apiCall()
         update()
         viewTimer.delegate = self
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -45,6 +45,8 @@ class QuestionVC: UIViewController{
         qvwContainer.layer.shadowOffset = .zero
         qvwContainer.layer.shadowOpacity = 1.0
         qvwContainer.layer.shadowRadius = 10.0
+        viewTimer.layer.cornerRadius = viewTimer.frame.width / 2
+        viewTimer.layer.masksToBounds = true
         
      //   qvwContainer.layer.shadowPath = UIBezierPath(rect: qvwContainer.bounds).cgPath
         qvwContainer.layer.shouldRasterize = true
@@ -131,13 +133,27 @@ class QuestionVC: UIViewController{
     
     func timmer() {
         viewTimer.labelFont = UIFont(name: "Arial", size: 60)
-        viewTimer.labelTextColor = UIColor.red
+        viewTimer.labelTextColor = UIColor.black
+
         viewTimer.timerFinishingText = "0"
         viewTimer.lineWidth = 10
         viewTimer.start(beginingValue: 10, interval: 1)
         
     }
-    
+    func timerDidUpdateCounterValue(sender: SRCountdownTimer, newValue: Int) {
+       if newValue < 5 {
+            viewTimer.lineColor = UIColor.red
+           viewTimer.backgroundColor = UIColor.systemRed
+
+        }
+        else {
+            viewTimer.lineColor = UIColor.green
+            viewTimer.backgroundColor = UIColor.systemGreen
+        }
+
+        
+        print(newValue)
+    }
 }
 //MARK: - Extention
 extension QuestionVC: SRCountdownTimerDelegate {
