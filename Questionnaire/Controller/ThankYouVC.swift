@@ -37,7 +37,7 @@ class ThankYouVC: UIViewController {
         
         // 3. Set animation content mode
         
-        animationView!.contentMode = .scaleAspectFit
+        animationView!.contentMode = .scaleAspectFill
         
         // 4. Set animation loop mode
         

@@ -10,7 +10,7 @@ import UIKit
 extension String{
     
     func validName() -> Bool{
-        let inputRegEx = "^[a-zA-Z-]+ ?.* [a-zA-Z-]+$"
+        let inputRegEx = "^[a-zA-Z\\_]{2,18}$"
         let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
         return inputpred.evaluate(with: self)
         

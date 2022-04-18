@@ -29,15 +29,19 @@ class SignUPVC: UIViewController {
                 openAlert(title: "Alert", message: "Your Text Field is Empty.", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in print("Okay clicked")}])
                 
             }
-            else {
+            if name.validName() {
+         
                 print("Taped")
                 
                 self.name = txtName.text!
+              //  let nm: type  = UIStoryboar.d(name: "NameValidation", bundle: nil)
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "QuestionVC") as! QuestionVC
                 vc.PlayedPlayerName = self.name
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            else {
+                openAlert(title: "Alert", message: "Please Enter Only String", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in print("Okay clicked")}])            }
         }
     }
 }
