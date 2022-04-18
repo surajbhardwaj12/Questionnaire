@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Lottie
 
 class ThankYouVC: UIViewController {
     
     var PlayerName: String = ""
     var TotalScore: Int = 0
+    
+    private var animationView: AnimationView?
     //MARK: - Outlet
    
     @IBOutlet weak var cardView: UIView!
@@ -24,7 +27,33 @@ class ThankYouVC: UIViewController {
         super.viewDidLoad()
         lblPlayer.text = "\(self.PlayerName) \(String(self.TotalScore))"
         setShadow(view: cardView)
-
+        
+        
+        // 2. Start AnimationView with animation name (without extension)
+        
+        animationView = .init(name: "party2")
+        
+        animationView!.frame = view.bounds
+        
+        // 3. Set animation content mode
+        
+        animationView!.contentMode = .scaleAspectFill
+        
+        // 4. Set animation loop mode
+        
+        animationView!.loopMode = .loop
+        
+        // 5. Adjust animation speed
+        
+//        animationView!.animationSpeed = 0.5
+        
+        cardView.addSubview(animationView!)
+        
+        // 6. Play animation
+        
+        animationView!.play()
+        
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
