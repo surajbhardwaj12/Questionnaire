@@ -8,4 +8,5 @@ target 'Questionnaire' do
   # Pods for Questionnaire
   pod 'SRCountdownTimer'
   pod 'Alamofire'
+  pod 'lottie-ios'
 end
