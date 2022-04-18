@@ -10,9 +10,7 @@ class QuestionVC: UIViewController{
     @IBOutlet weak var QuestionLabel: UILabel!
     @IBOutlet weak var ScoreView: UILabel!
     @IBOutlet weak var QusetionCounter: UILabel!
-    
     @IBOutlet weak var qvwContainer: UIView!
-    
     @IBOutlet weak var viewTimer: SRCountdownTimer!
     @IBOutlet weak var NoBtn: UIButton!
     @IBOutlet weak var YesBtn: UIButton!
@@ -27,9 +25,6 @@ class QuestionVC: UIViewController{
     var arrQuestionary:[Questions] = []
     let url = URL(string: "https://raw.githubusercontent.com/surajbhardwaj12/Question/main/Question.json")
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         timmer()
@@ -37,21 +32,8 @@ class QuestionVC: UIViewController{
         update()
         viewTimer.delegate = self
         navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        // shadow to Question View
-        qvwContainer.layer.cornerRadius = 15.0
-        qvwContainer.layer.masksToBounds = false
-        qvwContainer.layer.shadowColor = UIColor.darkGray.cgColor
-        qvwContainer.layer.shadowOffset = .zero
-        qvwContainer.layer.shadowOpacity = 1.0
-        qvwContainer.layer.shadowRadius = 10.0
         viewTimer.layer.cornerRadius = viewTimer.frame.width / 2
         viewTimer.layer.masksToBounds = true
-        
-     //   qvwContainer.layer.shadowPath = UIBezierPath(rect: qvwContainer.bounds).cgPath
-        qvwContainer.layer.shouldRasterize = true
-        qvwContainer.layer.rasterizationScale = UIScreen.main.scale
-        
     }
     
     //MARK: - API Call
@@ -97,14 +79,11 @@ class QuestionVC: UIViewController{
     
     //MARK: - Custom Function
     func updateQuestion() {
-        
         if questionNumber <= arrQuestionary.count - 1 {
             questionNumber += 1
             QuestionLabel.text =  arrQuestionary[questionNumber - 1].Question
             timmer()
         } else {
-            
-            
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThankYouVC") as! ThankYouVC
             vc.handler { [weak self] doneStatus in
                 guard let `self` = self else {return}
@@ -118,7 +97,6 @@ class QuestionVC: UIViewController{
                 
             }
             vc.modalPresentationStyle = .overFullScreen
-
             vc.TotalScore = self.score
             vc.PlayerName = self.PlayedPlayerName
             self.present(vc, animated: true, completion: nil)
@@ -134,27 +112,24 @@ class QuestionVC: UIViewController{
     func timmer() {
         viewTimer.labelFont = UIFont(name: "Arial", size: 60)
         viewTimer.labelTextColor = UIColor.black
-
         viewTimer.timerFinishingText = "0"
         viewTimer.lineWidth = 10
         viewTimer.start(beginingValue: 10, interval: 1)
         
     }
     func timerDidUpdateCounterValue(sender: SRCountdownTimer, newValue: Int) {
-       if newValue < 5 {
+        if newValue < 5 {
             viewTimer.lineColor = UIColor.red
-           viewTimer.backgroundColor = UIColor.systemRed
-
+            viewTimer.backgroundColor = UIColor.systemRed
         }
         else {
             viewTimer.lineColor = UIColor.green
             viewTimer.backgroundColor = UIColor.systemGreen
         }
-
-        
         print(newValue)
     }
 }
+
 //MARK: - Extention
 extension QuestionVC: SRCountdownTimerDelegate {
     func timerDidEnd(sender: SRCountdownTimer, elapsedTime: TimeInterval) {

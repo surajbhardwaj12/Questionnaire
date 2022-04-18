@@ -9,6 +9,6 @@ import Foundation
 
 struct Questions:Decodable {
     let id: Int
-    let  Question: String
+    let Question: String
     let Answer: String
 }

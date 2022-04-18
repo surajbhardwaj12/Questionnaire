@@ -11,8 +11,9 @@
 		134D1BB9280968B800C080BC /* party2.json in Resources */ = {isa = PBXBuildFile; fileRef = 134D1BB6280968B700C080BC /* party2.json */; };
 		134D1BBA280968B800C080BC /* party3.json in Resources */ = {isa = PBXBuildFile; fileRef = 134D1BB7280968B800C080BC /* party3.json */; };
 		134D1BBC280968C800C080BC /* winner.json in Resources */ = {isa = PBXBuildFile; fileRef = 134D1BBB280968C800C080BC /* winner.json */; };
-		1370F9FA2806C6E3008B581E /* ViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370F9F92806C6E3008B581E /* ViewShadow.swift */; };
+		1370F9FA2806C6E3008B581E /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1370F9F92806C6E3008B581E /* extension.swift */; };
 		13B09CF728054CE90004257D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13B09CF528054CE90004257D /* LaunchScreen.storyboard */; };
+		13DB2B30280D8D2800D8CED7 /* QuestionViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DB2B2F280D8D2700D8CED7 /* QuestionViewShadow.swift */; };
 		1E4F2551280070DE00B7FE36 /* ThankYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4F2550280070DE00B7FE36 /* ThankYouVC.swift */; };
 		1EE7E0B72800440A0048141E /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E0B62800440A0048141E /* ApiModel.swift */; };
 		1EE7E0C02800519B0048141E /* SignUPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E0BF2800519B0048141E /* SignUPVC.swift */; };
@@ -33,8 +34,9 @@
 		134D1BB6280968B700C080BC /* party2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = party2.json; sourceTree = "<group>"; };
 		134D1BB7280968B800C080BC /* party3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = party3.json; sourceTree = "<group>"; };
 		134D1BBB280968C800C080BC /* winner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = winner.json; sourceTree = "<group>"; };
-		1370F9F92806C6E3008B581E /* ViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShadow.swift; sourceTree = "<group>"; };
+		1370F9F92806C6E3008B581E /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		13B09CF628054CE90004257D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		13DB2B2F280D8D2700D8CED7 /* QuestionViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewShadow.swift; sourceTree = "<group>"; };
 		1E4F2550280070DE00B7FE36 /* ThankYouVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankYouVC.swift; sourceTree = "<group>"; };
 		1EE7E0B62800440A0048141E /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		1EE7E0BF2800519B0048141E /* SignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUPVC.swift; sourceTree = "<group>"; };
@@ -77,6 +79,21 @@
 			path = lottie_file;
 			sourceTree = "<group>";
 		};
+		13DB2B2B280D835500D8CED7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				134D1BB42809688E00C080BC /* lottie_file */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		13DB2B2C280D854200D8CED7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1E4F2552280078AA00B7FE36 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +106,7 @@
 		1EE7E0B52800439A0048141E /* Custom Function */ = {
 			isa = PBXGroup;
 			children = (
+				13DB2B2F280D8D2700D8CED7 /* QuestionViewShadow.swift */,
 				2213E89E27FCA35400F83AB5 /* CustomBtn.swift */,
 				2260801427FE16F400CC8BE5 /* CustomLbl.swift */,
 			);
@@ -107,9 +125,10 @@
 		1EE7E0C5280056020048141E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				1EE7E0C6280056180048141E /* Alert.swift */,
+				1EE7E0B52800439A0048141E /* Custom Function */,
 				1EE7E0C8280056280048141E /* NameValidation.swift */,
-				1370F9F92806C6E3008B581E /* ViewShadow.swift */,
+				1370F9F92806C6E3008B581E /* extension.swift */,
+				1EE7E0C6280056180048141E /* Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -135,13 +154,13 @@
 		22D4CE1C27FB570100F282BE /* Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
-				134D1BB42809688E00C080BC /* lottie_file */,
 				1E4F2552280078AA00B7FE36 /* Delegates */,
 				22D4CE3127FB641100F282BE /* Controller */,
-				1EE7E0C5280056020048141E /* Extension */,
-				1EE7E0B52800439A0048141E /* Custom Function */,
-				22D4CE3227FB836C00F282BE /* Model */,
 				1EE7E0C1280051A60048141E /* StoryBoard */,
+				22D4CE3227FB836C00F282BE /* Model */,
+				13DB2B2C280D854200D8CED7 /* Views */,
+				1EE7E0C5280056020048141E /* Extension */,
+				13DB2B2B280D835500D8CED7 /* Resources */,
 				22D4CE2627FB570200F282BE /* Assets.xcassets */,
 				22D4CE2B27FB570300F282BE /* Info.plist */,
 			);
@@ -302,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13DB2B30280D8D2800D8CED7 /* QuestionViewShadow.swift in Sources */,
 				1EE7E0C02800519B0048141E /* SignUPVC.swift in Sources */,
 				22D4CE2227FB570100F282BE /* QuestionVC.swift in Sources */,
 				1EE7E0C9280056280048141E /* NameValidation.swift in Sources */,
@@ -309,7 +329,7 @@
 				2213E89F27FCA35400F83AB5 /* CustomBtn.swift in Sources */,
 				1E4F2551280070DE00B7FE36 /* ThankYouVC.swift in Sources */,
 				22D4CE1E27FB570100F282BE /* AppDelegate.swift in Sources */,
-				1370F9FA2806C6E3008B581E /* ViewShadow.swift in Sources */,
+				1370F9FA2806C6E3008B581E /* extension.swift in Sources */,
 				22D4CE2027FB570100F282BE /* SceneDelegate.swift in Sources */,
 				1EE7E0C7280056180048141E /* Alert.swift in Sources */,
 				2260801527FE16F400CC8BE5 /* CustomLbl.swift in Sources */,

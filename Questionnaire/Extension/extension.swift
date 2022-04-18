@@ -12,8 +12,8 @@ extension UIViewController {
     {
         view.layer.cornerRadius = 25
         view.layer.borderWidth = 0
-//        view.layer.borderColor = AppTextFieldBorderColor.cgColor
-
+        //        view.layer.borderColor = AppTextFieldBorderColor.cgColor
+        
         //MARK:- Shade a view
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)

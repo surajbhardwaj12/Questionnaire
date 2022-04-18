@@ -15,13 +15,12 @@ class SignUPVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         txtName.text = nil
     }
+    
     //MARK: - Action Method
     @IBAction func btnClicked(_ sender: UIButton) {
         if let name = txtName.text {
@@ -30,11 +29,11 @@ class SignUPVC: UIViewController {
                 
             }
             if name.validName() {
-         
+                
                 print("Taped")
                 
                 self.name = txtName.text!
-              //  let nm: type  = UIStoryboar.d(name: "NameValidation", bundle: nil)
+                //  let nm: type  = UIStoryboar.d(name: "NameValidation", bundle: nil)
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyBoard.instantiateViewController(withIdentifier: "QuestionVC") as! QuestionVC
                 vc.PlayedPlayerName = self.name
